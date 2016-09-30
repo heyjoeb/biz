@@ -2,7 +2,9 @@
   "name": "prueba",
   "private": true,
   "dependencies": {
-    "jquery": "~2.1.1"
+    "jquery": "~2.1.1",
+    "jquery-mockjax": "^2.2.1",
+    "mustache.js": "mustache#^2.2.1"
   },
   "devDependencies": {
     "chai": "^3.5.0",
