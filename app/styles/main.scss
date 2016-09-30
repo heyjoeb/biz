@@ -1,3 +1,124 @@
 // bower:scss
+@import "bower_components/font-awesome/scss/font-awesome.scss";
 // endbower
 
+.browserupgrade {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+// -------------------------------  EFFECTS
+@mixin effect_color {
+    -webkit-transition: color 0.6s ease;
+    -moz-transition: color 0.6s ease;
+    -o-transition: color 0.6s ease;
+    transition: color 0.6s ease;
+}
+@mixin effect_opacity {
+    -webkit-transition: opacity 0.6s ease;
+    -moz-transition: opacity 0.6s ease;
+    -o-transition: opacity 0.6s ease;
+    transition: opacity 0.6s ease;
+}
+@mixin effect_bg {
+    -webkit-transition: background-color 0.6s ease;
+    -moz-transition: background-color 0.6s ease;
+    -o-transition: background-color 0.6s ease;
+    transition: background-color 0.6s ease;
+}
+
+
+// -------------------------------  MEDIA QUERIES
+@mixin breakpoint($point) {
+    @if $point == xl {
+        @media (max-width: 1365px) { @content; }
+    }
+    @else if $point == lrg {
+        @media (max-width: 1199px) { @content; }
+    }
+    @else if $point == md {
+        @media (max-width: 991px) { @content; }
+    }
+    @else if $point == sm {
+        @media (max-width: 800px)  { @content; }
+    }
+    @else if $point == xs {
+        @media (max-width: 550px)  { @content; }
+    }
+    @else if $point == xxs {
+        @media (max-width: 450px)  { @content; }
+    }
+}
+
+
+/*   ----------------------------------------------------
+
+GENERAL
+
+-------------------------------------------------------  */  
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+html, body {
+  min-height: 100%;
+  color: #212121;
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+a {
+  @include effect_opacity;
+  text-decoration: none;
+  &:hover, &:active, &:focus {
+    opacity: 0.7;
+    @include effect_opacity;
+  }
+}
+h1, h2, h3, h4, h5 {
+  font-family: 'Titillium Web', sans-serif;
+  font-weight: 400;
+}
+
+/*   ----------------------------------------------------
+
+TOP
+
+-------------------------------------------------------  */ 
+.container-top {
+  overflow: hidden;
+  .container-brand {
+    float: left;
+    width: 20%;
+    background: #425968;
+    padding: 15px;
+  }
+  .brand {
+    width: 83px;
+    height: 35px;
+    margin: 0 auto;
+    img {
+      width: 100%;
+    }
+  }
+  .container-nav {
+    float: left;
+    width: 80%;
+    background: #009790;
+    padding: 15px;
+    nav {
+      height: 35px;
+      display:table-cell;
+      vertical-align: middle;
+    }
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+
+    }
+    a {
+      color: #fff;
+      font-family: 'Titillium Web', sans-serif;
+    }
+  }
+}
