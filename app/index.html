@@ -59,124 +59,89 @@
             <h1><i class="fa fa-folder" aria-hidden="true"></i>
  Processes</h1>
             <ul>
-              <li class="process pending">
-                <a href="">
-                  <div class="process-status"></div>
-                  <h2 class="case-number">551</h2>
-                  <h3 class="process-name">Vacations</h3>
-                  <table class="process-info">
-                    <tr>
-                      <td class="txt-left">Task name</td>
-                      <td class="txt-right process-job-name">Some time off</td>
-                    </tr>
-                    <tr>
-                      <td class="txt-left">Creation date</td>
-                      <td class="txt-right process-date">1/23/2015</td>
-                    </tr>
-                  </table>
-                </a>
-              </li>
-
-              <li class="process approved">
-                <a href="">
-                  <div class="process-status"></div>
-                  <h2 class="case-number">551</h2>
-                  <h3 class="process-name">Vacations</h3>
-                  <table class="process-info">
-                    <tr>
-                      <td class="txt-left">Task name</td>
-                      <td class="txt-right process-job-name">Some time off</td>
-                    </tr>
-                    <tr>
-                      <td class="txt-left">Creation date</td>
-                      <td class="txt-right process-date">1/23/2015</td>
-                    </tr>
-                  </table>
-                </a>
-              </li>
-
-              <li class="process denied">
-                <a href="">
-                  <div class="process-status"></div>
-                  <h2 class="case-number">551</h2>
-                  <h3 class="process-name">Vacations</h3>
-                  <table class="process-info">
-                    <tr>
-                      <td class="txt-left">Task name</td>
-                      <td class="txt-right process-job-name">Some time off</td>
-                    </tr>
-                    <tr>
-                      <td class="txt-left">Creation date</td>
-                      <td class="txt-right process-date">1/23/2015</td>
-                    </tr>
-                  </table>
-                </a>
-              </li>
-              
+            <div id="processList"></div>
+            <script id="theProcess" type="text/template">
+                {{#processes}}
+                  <li class="process" data-approval="case-{{caseId}}">
+                    <a href="" id="case-{{caseId}}" class="case-trigger">
+                      <div class="process-status"></div>
+                      <h2 class="case-number">{{caseId}}</h2>
+                      <h3 class="process-name">{{process}}</h3>
+                      <table class="process-info">
+                        <tr>
+                          <td class="txt-left">Task name</td>
+                          <td class="txt-right process-job-name">{{activity}}</td>
+                        </tr>
+                        <tr>
+                          <td class="txt-left">Request date</td>
+                          <td class="txt-right process-date">{{requestDate}}</td>
+                        </tr>
+                      </table>
+                    </a>
+                  </li>
+                {{/processes}}
+            </script>
             </ul>
           </div><!--/.container-processes -->
 
           <div class="container-process-detail">
             <h1><i class="fa fa-info" aria-hidden="true"></i>
  Process Detail</h1>
-            <div class="process-detail">
-              <h2>General Info</h2>
-              <table class="process-info">
-                <tr>
-                  <td class="txt-left">Process Number</td>
-                  <td class="txt-right process-job-name">551</td>
-                </tr>
-                <tr>
-                  <td class="txt-left">Process Name</td>
-                  <td class="txt-right process-job-name">Vacations</td>
-                </tr>
-                <tr>
-                  <td class="txt-left">Task name</td>
-                  <td class="txt-right process-job-name">Some time off</td>
-                </tr>
-                <tr>
-                  <td class="txt-left">Creation date</td>
-                  <td class="txt-right process-date">1/23/2015</td>
-                </tr>
-                <tr>
-                  <td class="txt-left">Status</td>
-                  <td class="txt-right process-date">Approved</td>
-                </tr>
-              </table>
-              <h2>Details</h2>
-              <table class="process-info">
-                <tr>
-                  <td class="txt-left">Employee</td>
-                  <td class="txt-right process-job-name">name</td>
-                </tr>
-                <tr>
-                  <td class="txt-left">Vacation Start Date</td>
-                  <td class="txt-right process-job-name">08/06/2015</td>
-                </tr>
-                <tr>
-                  <td class="txt-left">Vacation End Date</td>
-                  <td class="txt-right process-job-name">08/06/2015</td>
-                </tr>
-                <tr>
-                  <td class="txt-left">Vacation Total Days</td>
-                  <td class="txt-right process-date">30</td>
-                </tr>
-              </table>
-              <div class="approval">
-                <h2>Approve?</h2>
-                <ul>
-                  <li>
-                    <a class="sure" href="">
-                      <i class="fa fa-thumbs-up" aria-hidden="true"></i>Sure!
-                    </a>
-                  </li>
-                  <li>
-                    <a class="nope" href="">
-                      <i class="fa fa-thumbs-down" aria-hidden="true"></i>Nope!
-                    </a>
-                  </li>
-                </ul>
-              </div>
+            <div class="process-detail" id="processDetail">
+
+              <script id="theCase" type="text/template">
+                <p class="instructions">Please click on a process to see its details.</p>
+                {{#cases}}
+                  <div class="a-case case-{{caseId}}" id="{{caseId}}" data-id="case-{{caseId}}">
+                    <h2>General Info</h2>
+                    <table class="process-info">
+                      <tr>
+                        <td class="txt-left">Process Number</td>
+                        <td class="txt-right process-job-name">{{caseId}}</td>
+                      </tr>
+                      <tr>
+                        <td class="txt-left">Status</td>
+                        <td class="txt-right process-status-text" data-approval="case-{{caseId}}">{{approved}}</td>
+                      </tr>
+                    </table>
+                    <h2>Details</h2>
+                    <table class="process-info">
+                      <tr>
+                        <td class="txt-left">Employee</td>
+                        <td class="txt-right process-job-name">{{employee}}</td>
+                      </tr>
+                      <tr>
+                        <td class="txt-left">Vacation Start Date</td>
+                        <td class="txt-right process-job-begin-date" id="beginDate">{{beginDate}}</td>
+                      </tr>
+                      <tr>
+                        <td class="txt-left">Vacation End Date</td>
+                        <td class="txt-right process-job-end-date" id="endDate">{{endDate}}</td>
+                      </tr>
+                      <tr>
+                        <td class="txt-left">Vacation Total Days</td>
+                        <td class="txt-right total-days" id="totalDays">?</td>
+                      </tr>
+                    </table>
+                    <div class="approval" data-approval="case-{{caseId}}">
+                      <h2>Approve?</h2>
+                      <ul>
+                        <li>
+                          <a class="sure" href="" data-approve="case-{{caseId}}">
+                            <i class="fa fa-thumbs-up" aria-hidden="true"></i>Sure!
+                          </a>
+                        </li>
+                        <li>
+                          <a class="nope" href="" data-approve="case-{{caseId}}">
+                            <i class="fa fa-thumbs-down" aria-hidden="true"></i>Nope!
+                          </a>
+                        </li>
+                      </ul>
+                    </div><!--/.approval -->
+                  </div><!--/.a-case -->
+                {{/cases}}
+              </script>
+              
             </div><!--/.process-detail -->
           </div><!--/.container-process-detail -->
         </div><!--/.container-work-area -->
